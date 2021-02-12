@@ -371,6 +371,6 @@ def test_strpdmy():
     for date in dates:
         date_str = date.strftime(date_format)
         vic_lib.strpdmy(date_str.encode(), date_format.encode(), dmy)
-        expected = date.to_datetime()
+        expected = date.to_pydatetime()  # to_datetime() deprecated
         actual = dmy_to_datetime(dmy)
         assert abs(expected - actual) < datetime.timedelta(seconds=1)
